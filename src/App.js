@@ -1,9 +1,25 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import * as UserAction from './UserActions'
+
 import UserPage from "./UserPage";
 import EditUser from "./EditUser";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getUser: () => dispatch(UserAction.getUsers())
+  };
+}
 
 class App extends Component {
+
+  componentDidMount() {
+    console.log("init")
+    this.props.getUser();
+  }
+  
   render() {
     return (
       <Router>
@@ -14,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

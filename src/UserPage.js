@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'
 
-import * as EventActions from './EventActions';
+
 
 function mapStateToProps(state) {
   return {
@@ -11,18 +11,12 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    click: () => dispatch(EventActions.createEvent()),
+  return {    
     deleteUser: (vo) => dispatch({type:"REMOVE_USERS", data:vo})    
   };
 }
 
-class UserPage extends Component {
-
-  componentDidMount() {
-    this.props.click();
-  }
-
+class UserPage extends Component {  
   constructor(props) {
     super(props);
     this.deleteItem = this.deleteItem.bind(this);
