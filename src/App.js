@@ -14,9 +14,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 class App extends Component {
-
-  componentDidMount() {
-    console.log("init")
+  constructor(props) {
+    super(props);
+    console.log("[App] constructor()");    
     this.props.getUser();
   }
   

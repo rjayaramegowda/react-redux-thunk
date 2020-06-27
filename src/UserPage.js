@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
-
 
 
 function mapStateToProps(state) {
@@ -12,7 +10,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {    
-    deleteUser: (vo) => dispatch({type:"REMOVE_USERS", data:vo})    
+    deleteUser: (vo) => dispatch({type:"REMOVE_USERS", data:vo}),
+    setUser: (vo) => dispatch({ type: "SET_USER", data: vo})    
   };
 }
 
@@ -20,11 +19,19 @@ class UserPage extends Component {
   constructor(props) {
     super(props);
     this.deleteItem = this.deleteItem.bind(this);
+    this.editUser = this.editUser.bind(this);
   }
 
   deleteItem(vo) {
-  //  console.log(vo.id)
-   this.props.deleteUser(vo)
+    console.log("UserPage deleteItem()");    
+    this.props.deleteUser(vo)
+  }
+
+  editUser(e) {
+    console.log("[UserPage] editUser, e.currentTarget.id = e.currentTarget.id")    
+    var user = this.props.userList.filter(v => v.id ===  parseInt(e.currentTarget.id));
+    this.props.setUser(user[0]);  
+    this.props.history.push('./user/' + e.currentTarget.id);
   }
   
 
@@ -36,7 +43,7 @@ class UserPage extends Component {
             <td>{vo.name}</td>
             <td>{vo.email}</td>
             <td>{vo.website}</td>
-            <td><Link to={'./user/' + vo.id} className="btn btn-primary btn-sm">Edit</Link>
+            <td><button id={vo.id} onClick={(e) => this.editUser(e)} className="btn btn-primary btn-sm">Edit</button>
             <button className="btn btn-danger btn-sm ml-2" onClick={(e) => this.deleteItem(vo)}>Delete</button> </td>
           </tr>
           )

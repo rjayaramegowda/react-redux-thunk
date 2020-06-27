@@ -1,8 +1,12 @@
-const selectedUser = (state = user, action) => {
+function selectedUser(state = {}, action) {
+  switch (action.type) {
+    case "SET_USER":
+      console.log("[SelectedUserReducer] user  = " + action.data);      
+      return action.data;
 
-    return state
+    default:
+      return state;
+  }
 }
 
 export default selectedUser;
-
-const user = {name: "Ravi"}
