@@ -63,6 +63,7 @@ class EditUser extends Component {
             <input
               type="email"
               defaultValue={this.props.vo.email}
+              onChange={(e) => this.setState({ email: e.target.value })}
               className="form-control rounded-0"
               id="colFormLabel2"
               placeholder="Email"
@@ -81,6 +82,7 @@ class EditUser extends Component {
             <input
               type="text"
               defaultValue={this.props.vo.website}
+              onChange={(e) => this.setState({website: e.target.value})}
               className="form-control rounded-0"
               id="colFormLabel3"
               placeholder="Website"
