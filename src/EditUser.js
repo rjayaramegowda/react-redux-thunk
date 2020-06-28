@@ -27,6 +27,7 @@ class EditUser extends Component {
     console.log("[EditUser] saveHandler()");
     var itemIndex = this.props.userList.indexOf(this.props.vo);
     this.props.saveUser({ ...this.props.vo, ...this.state }, itemIndex);
+    this.props.history.push("/");
   }
 
   render() {

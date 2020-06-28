@@ -6,8 +6,11 @@ const userReducer = (state = userList, action) => {
 
     case "UPDATE_USER":
       console.log("[UserReducer] action.type = " + action.type);
-      state.splice(action.index, 1, action.data);
-      return state;
+      return [
+        ...state.slice(0, action.index),
+        action.data,
+        ...state.slice(action.index + 1),
+      ];
 
     case "ADD_USERS":
       return state;
