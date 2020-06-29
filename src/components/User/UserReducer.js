@@ -2,7 +2,7 @@ export const userReducer = (state = [], action) => {
   switch (action.type) {
     case "GET_USERS":
       console.log("[UserReducer] action.type = " + action.type);
-      return Object.assign([...state], action.data);
+      return action.data;
 
     case "UPDATE_USER":
       console.log("[UserReducer] action.type = " + action.type);
