@@ -1,4 +1,4 @@
-const userReducer = (state = userList, action) => {
+export const userReducer = (state = [], action) => {
   switch (action.type) {
     case "GET_USERS":
       console.log("[UserReducer] action.type = " + action.type);
@@ -23,7 +23,14 @@ const userReducer = (state = userList, action) => {
   }
 };
 
-export default userReducer;
+export const selectedUser = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_USER":
+      console.log("[SelectedUserReducer] user  = " + action.data);      
+      return action.data;
 
-// userList
-const userList = [];
+    default:
+      return state;
+  }
+}
+

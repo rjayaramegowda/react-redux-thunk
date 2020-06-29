@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import * as UserAction from './UserActions'
+import * as UserAction from './components/User/UserActions'
 
-import UserPage from "./UserPage";
-import EditUser from "./EditUser";
+import EditUser from "./components/User/EditUser";
+import User from "./components/User";
 
 
 function mapDispatchToProps(dispatch) {
@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Route exact path={["/"]} component={UserPage} />        
+        <Route exact path={["/"]} component={User} />        
         <Route exact path="/user/:userId" component={EditUser} /> 
       </Router>      
     );
