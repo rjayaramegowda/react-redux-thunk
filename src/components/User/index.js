@@ -58,7 +58,7 @@ class User extends Component {
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Website</th>
-            <th scope="col">Action54</th>
+            <th scope="col">Action develop</th>
           </tr>
         </thead>
         <tbody>
